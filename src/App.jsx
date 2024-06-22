@@ -2,6 +2,7 @@ import Search from "./components/Search";
 import WeatherDisplay from "./components/WeatherDisplay";
 import { getWeatherOfCity } from "./utils/services";
 import styled from "styled-components";
+import { useState } from "react";
 
 const MainContainer = styled.div`
   display: flex;
@@ -11,9 +12,11 @@ const MainContainer = styled.div`
 `;
 
 const App = () => {
+  const [weather, setWeather] = useState(null);
+
   const fetchWeather = (city) => {
     getWeatherOfCity(city).then((res) => {
-      console.log(res.data);
+      setWeather(res?.data);
     });
   };
 
@@ -21,7 +24,7 @@ const App = () => {
     <MainContainer>
       <h1>Weather Dashboard</h1>
       <Search fetchWeather={fetchWeather} />
-      <WeatherDisplay />
+      <WeatherDisplay weather={weather} />
     </MainContainer>
   );
 };
