@@ -10,10 +10,14 @@ const MainContainer = styled.div`
 `;
 
 const App = () => {
+  const fetchWeather = (city) => {
+    console.log(city);
+  };
+
   return (
     <MainContainer>
       <h1>Weather Dashboard</h1>
-      <Search />
+      <Search fetchWeather={fetchWeather} />
       <WeatherDisplay />
     </MainContainer>
   );
