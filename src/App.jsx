@@ -1,5 +1,6 @@
 import Search from "./components/Search";
 import WeatherDisplay from "./components/WeatherDisplay";
+import { getWeatherOfCity } from "./utils/services";
 import styled from "styled-components";
 
 const MainContainer = styled.div`
@@ -11,7 +12,9 @@ const MainContainer = styled.div`
 
 const App = () => {
   const fetchWeather = (city) => {
-    console.log(city);
+    getWeatherOfCity(city).then((res) => {
+      console.log(res.data);
+    });
   };
 
   return (
